@@ -1,0 +1,66 @@
+mjml
+  mj-head
+    mj-title SchoolPass Automations Bus Manifest Report
+    mj-attributes
+      mj-body(background-color="#F0F0F0")
+      mj-all(font-family="BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif" padding="0")
+    mj-raw
+      meta(name="color-scheme" content="light dark")
+      meta(name="supported-color-schemes" content="light dark")
+    mj-style
+      | :root {
+      |    color-scheme: light dark;
+      |    supported-color-schemes: light dark;
+      |  }
+      | 
+      |  @media(prefers-color-scheme: dark) {
+      |    body, body > div {
+      |      background-color: #111111 !important;
+      |    }
+      |    
+      |    div, td, tr {
+      |      color: #DDDCDA !important;
+      |    }
+      |    
+      |    .main-section, .main-section table { 
+      |      background-color: #0e0e0e !important;
+      |    }
+      |  }
+  mj-body
+    mj-section(full-width="full-width" padding="30px 0px 20px 0px")
+      mj-column
+        if logoURL
+          mj-image(align="left" width="350" style="max-width: 350px" src="#{logoURL}")
+        else
+          mj-table(font-size="20px" align="left" padding="0")
+            tr
+              td(style="width: 30px")
+                img(align="left" width="30" style="max-width: 30px" src="https://raw.githubusercontent.com/bootsie123/schoolpass-automations/main/src/public/logo.png")
+              td(style="padding: 0 10px") SchoolPass Automations
+    mj-section(css-class="main-section" background-color="white" padding="20px 20px" border-radius="4px")
+      mj-column
+        mj-text(align="center" font-size="24px" padding-bottom="20px") Bus Manifest - #{date}
+        mj-table(font-size="15px" cellpadding="2px")
+          tr(css-class="divider" style="border-bottom: 1px solid #D3D3D3; text-align: left")
+            th(align="left" style="border-bottom: 1px solid #D3D3D3") Bus
+            th(align="left" style="border-bottom: 1px solid #D3D3D3") Student
+            th(align="left" style="border-bottom: 1px solid #D3D3D3") Grade
+          each bus in buses
+            each student, i in bus.students
+              tr
+                if i == 0
+                  td #{student.busRoute}
+                else
+                  td
+                td #{student.firstName}
+                td #{student.gradeName}
+            tr(style="border-bottom: 1px solid #D3D3D3")
+              td(style="padding-top: 8px; border-bottom: 1px solid #D3D3D3") <i>Subtotal</i>
+              td(style="padding-top: 8px; border-bottom: 1px solid #D3D3D3") <i>#{bus.students.length}</i>
+              td(style="border-bottom: 1px solid #D3D3D3")
+          tr
+            td(style="padding-top: 8px") <b>Total</b>
+            td(style="padding-top: 8px") <b>#{studentTotal}</b>
+    mj-section(full-width="full-width" padding="40px 25px")
+      mj-column
+        mj-text(align="center" color="#B9B9B9" padding-bottom="12px") This is an automated email. <strong>DO NOT REPLY</strong>

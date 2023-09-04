@@ -1,0 +1,9 @@
+extends main.pug 
+
+block content
+  if success
+    h1(class="title has-text-success") Success!
+    p=text
+  else 
+    h1(class="title has-text-danger") Error
+    p=errorText

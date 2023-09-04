@@ -1,0 +1,43 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "npm install (functions)",
+      "command": "npm install"
+    },
+    {
+      "type": "shell",
+      "label": "npm build (functions)",
+      "command": "npm run build",
+      "dependsOn": "npm install (functions)",
+      "problemMatcher": "$tsc"
+    },
+    {
+      "type": "shell",
+      "label": "predeploy",
+      "command": "npm run prestart && npm prune --production",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "azurite start",
+      "command": "npm run azurite",
+      "problemMatcher": "$func-node-watch"
+    },
+    {
+      "type": "func",
+      "label": "func start",
+      "command": "host start",
+      "problemMatcher": "$func-node-watch",
+      "dependsOn": "npm install (functions)"
+    },
+    {
+      "label": "app start",
+      "dependsOn": ["func start", "azurite start"],
+      "dependsOrder": "parallel",
+      "problemMatcher": "$func-node-watch",
+      "isBackground": true
+    }
+  ]
+}

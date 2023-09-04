@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    title #{pageTitle ? pageTitle : "SchoolPass Automations"}
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="icon" type="image/x-icon" href="/assets/favicon.ico")
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css")
+    link(rel="stylesheet" href="/assets/background.css")
+    link(rel="stylesheet" href="/assets/logo.css")
+    block head
+  body 
+    section(class="hero is-fullheight")
+      div(class="hero-body")
+        div(class="container")
+          div(class="columns is-centered")
+            div(class="column is-5")
+              div(class="box has-text-centered")
+                block content
+      div(class="container logo")
+        img(src="/assets/logo.svg" width="50px")
+        h1(class="title") SchoolPass Automations

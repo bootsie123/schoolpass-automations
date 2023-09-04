@@ -1,0 +1,22 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "FUNCTIONS_EXTENSION_VERSION": "~4",
+    "AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
+    "AzureTaskHub": "schoolpassAutomations",
+    "SCHOOLPASS_SCHOOL_NAME": null,
+    "SCHOOLPASS_USERNAME": "MUST_CHANGE_THIS",
+    "SCHOOLPASS_PASSWORD": "MUST_CHANGE_THIS",
+    "AUTOMATIONS_BUS_MANIFEST_REPORT_TO_EMAIL": "MUST_CHANGE_THIS",
+    "AUTOMATIONS_BUS_MANIFEST_REPORT_ENABLED": false,
+    "AUTOMATIONS_BUS_MANIFEST_REPORT_SCHEDULE": "0 0 12 * * 1-5",
+    "SMTP_SEND_AS_EMAIL": "MUST_CHANGE_THIS",
+    "SMTP_HOST": "MUST_CHANGE_THIS",
+    "SMTP_PORT": 587,
+    "SMTP_USE_TLS": false,
+    "SMTP_USERNAME": "MUST_CHANGE_THIS",
+    "SMTP_PASSWORD": "MUST_CHANGE_THIS"
+  }
+}
