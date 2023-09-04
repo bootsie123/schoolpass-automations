@@ -29,6 +29,8 @@ export function* orchestratorHandler(context: df.OrchestrationContext) {
   try {
     const buses: SchoolPassBus[] = yield context.df.callActivity(schoolpassBus);
 
+    buses.sort((bus1, bus2) => bus1.destination.localeCompare(bus2.destination));
+
     const busIDs = buses.map(bus => bus.id);
 
     if (busIDs.length < 1) {
@@ -59,6 +61,8 @@ export function* orchestratorHandler(context: df.OrchestrationContext) {
 
     for (const bus of buses) {
       const students = report.filter(student => student.busRoute === bus.destination);
+
+      students.sort((student1, student2) => student1.lastName.localeCompare(student2.lastName));
 
       studentTotal += students.length;
 
