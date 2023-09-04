@@ -29,14 +29,11 @@ mjml
   mj-body
     mj-section(full-width="full-width" padding="30px 0px 20px 0px")
       mj-column
-        if logoURL
-          mj-image(align="left" width="350" style="max-width: 350px" src="#{logoURL}")
-        else
-          mj-table(font-size="20px" align="left" padding="0")
-            tr
-              td(style="width: 30px")
-                img(align="left" width="30" style="max-width: 30px" src="https://raw.githubusercontent.com/bootsie123/schoolpass-automations/main/src/public/logo.png")
-              td(style="padding: 0 10px") SchoolPass Automations
+        mj-table(font-size="20px" align="left" padding="0")
+          tr
+            td(style="width: 30px")
+              img(align="left" width="30" style="max-width: 30px" src="https://raw.githubusercontent.com/bootsie123/schoolpass-automations/main/src/public/logo.png")
+            td(style="padding: 0 10px") SchoolPass Automations
     mj-section(css-class="main-section" background-color="white" padding="20px 20px" border-radius="4px")
       mj-column
         mj-text(align="center" font-size="24px" padding-bottom="20px") Bus Manifest - #{date}
