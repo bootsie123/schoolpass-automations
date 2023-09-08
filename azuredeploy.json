@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.20.4.51522",
-      "templateHash": "5014263450751525408"
+      "templateHash": "3134449756496071454"
     }
   },
   "parameters": {
@@ -75,6 +75,7 @@
         "AUTOMATIONS_BUS_MANIFEST_REPORT_TO_EMAIL": "MUST_CHANGE_THIS",
         "AUTOMATIONS_BUS_MANIFEST_REPORT_ENABLED": false,
         "AUTOMATIONS_BUS_MANIFEST_REPORT_SCHEDULE": "0 0 12 * * 1-5",
+        "AUTOMATIONS_BUS_MANIFEST_REPORT_BUS_TAGS": "",
         "SMTP_SEND_AS_EMAIL": "MUST_CHANGE_THIS",
         "SMTP_HOST": "MUST_CHANGE_THIS",
         "SMTP_PORT": 587,

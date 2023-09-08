@@ -14,6 +14,9 @@ import environment from "../../environment";
 
 const template = pug.compileFile(__dirname + "/../../templates/message.pug");
 
+const busTags = environment.automations.busManifestReport.busTags;
+const busTagsArray = busTags.length < 1 ? [] : busTags.split(",").map(tag => tag.trim());
+
 export const FUNCTION_NAME = "busManifestReportOrchestrator";
 
 /**
@@ -27,7 +30,17 @@ export function* orchestratorHandler(context: df.OrchestrationContext) {
   logger.log(Severity.Info, "Starting task...");
 
   try {
-    const buses: SchoolPassBus[] = yield context.df.callActivity(schoolpassBus);
+    let buses: SchoolPassBus[] = yield context.df.callActivity(schoolpassBus);
+
+    if (busTagsArray.length > 0) {
+      buses = buses.filter(bus => {
+        if (busTagsArray.includes(bus.btag) || busTagsArray.includes(bus.btag2)) {
+          return true;
+        }
+
+        return false;
+      });
+    }
 
     buses.sort((bus1, bus2) => bus1.destination.localeCompare(bus2.destination));
 

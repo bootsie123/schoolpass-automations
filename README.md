@@ -61,6 +61,7 @@ The following table shows the various configuration options for each tool which 
 | SCHOOLPASS_SCHOOL_NAME | ALL | String | SchoolPass Automations | The school name shown throughout the application and tools |
 | AUTOMATIONS_BUS_MANIFEST_REPORT_ENABLED | Bus Manifest Report | Boolean | false | Set to true if the Bus Manifest Report tool should be enabled, false if otherwise |
 | AUTOMATIONS_BUS_MANIFEST_REPORT_SCHEDULE | Bus Manifest Report | String | 0 0 12 * * 1-5 | Determines the frequency of email reports using an [NCronTab](https://github.com/atifaziz/NCrontab) expression. Defaults to 12PM every weekday (M-F) |
+| AUTOMATIONS_BUS_MANIFEST_REPORT_BUS_TAGS | Bus Manifest Report | String | "" | A comma separated list of bus tags to include in the report. Defaults to an empty string which means all buses will be included in the report | 
 | AUTOMATIONS_BUS_MANIFEST_REPORT_TO_EMAIL | Bus Manifest Report | String | | The email to send the bus manifest report to |
 
 ## Usage

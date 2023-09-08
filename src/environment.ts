@@ -12,7 +12,8 @@ export default {
     busManifestReport: {
       enabled: process.env.AUTOMATIONS_BUS_MANIFEST_REPORT_ENABLED === "true",
       toEmail: process.env.AUTOMATIONS_BUS_MANIFEST_REPORT_TO_EMAIL,
-      schedule: process.env.AUTOMATIONS_BUS_MANIFEST_REPORT_SCHEDULE
+      schedule: process.env.AUTOMATIONS_BUS_MANIFEST_REPORT_SCHEDULE,
+      busTags: process.env.AUTOMATIONS_BUS_MANIFEST_REPORT_BUS_TAGS || ""
     }
   },
   smtp: {
