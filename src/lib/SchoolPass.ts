@@ -159,7 +159,7 @@ export class SchoolPassAPI {
               this.schoolCode,
               this.user.userType,
               this.user.internalId,
-              this.hashPassword(environment.schoolPass.password)
+              environment.schoolPass.password
             );
 
             originalReq.headers.Token = token;
@@ -209,13 +209,14 @@ export class SchoolPassAPI {
       this.http.defaults.headers.common.Authorization = `Bearer ${data.authToken}`;
       this.http.defaults.headers.common.Appcode = this.schoolCode;
 
-      const hash = this.hashPassword(environment.schoolPass.password);
+      // No longer needed in newer version of School Pass
+      // const hash = this.hashPassword(environment.schoolPass.password);
 
       const userInfo = (
         await this.getAuthenticatingUser(
           connectionInfo.schoolConnection.appCode,
           environment.schoolPass.username,
-          hash
+          environment.schoolPass.password
         )
       )[0];
 
@@ -228,7 +229,7 @@ export class SchoolPassAPI {
         hash
       );
 
-      this.http.defaults.headers.common.Token = token;
+      this.http.defaults.headers.common.Authorization = `Bearer ${token}`;
     } catch (err) {
       this.logger.log(Severity.Error, err);
 
@@ -283,16 +284,13 @@ export class SchoolPassAPI {
     password: string
   ): Promise<string> {
     try {
-      const res = await this.http.put(
-        "User/Login",
-        {},
+      const res = await this.http.post(
+        "Auth/token",
         {
-          params: {
-            schoolCode,
-            userType,
-            userId,
-            password
-          }
+          schoolCode,
+          userType,
+          userId,
+          password
         }
       );
 
