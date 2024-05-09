@@ -105,6 +105,15 @@ export interface SchoolPassBusBoardingManifestReportItem {
 }
 
 /**
+ * Outlines a token returned from the School Pass API
+ */
+interface SchoolPassAPIToken {
+  access_token: string;
+  access_token_expirate: Date;
+  refresh_token: string;
+}
+
+/**
  * Responsible for handling all communication with the SchoolPass API
  */
 export class SchoolPassAPI {
@@ -162,7 +171,7 @@ export class SchoolPassAPI {
               environment.schoolPass.password
             );
 
-            originalReq.headers.Token = token;
+            originalReq.headers["Authorization"] = `Bearer ${token.access_token}`;
 
             return http(originalReq);
           } catch {
@@ -226,10 +235,10 @@ export class SchoolPassAPI {
         this.schoolCode,
         userInfo.userType,
         userInfo.internalId,
-        hash
+        environment.schoolPass.password
       );
 
-      this.http.defaults.headers.common.Authorization = `Bearer ${token}`;
+      this.http.defaults.headers.common.Authorization = `Bearer ${token.access_token}`;
     } catch (err) {
       this.logger.log(Severity.Error, err);
 
@@ -282,17 +291,14 @@ export class SchoolPassAPI {
     userType: number,
     userId: number,
     password: string
-  ): Promise<string> {
+  ): Promise<SchoolPassAPIToken> {
     try {
-      const res = await this.http.post(
-        "Auth/token",
-        {
-          schoolCode,
-          userType,
-          userId,
-          password
-        }
-      );
+      const res = await this.http.post("Auth/token", {
+        schoolCode,
+        userType,
+        userId,
+        password
+      });
 
       return res.data;
     } catch (err) {
