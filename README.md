@@ -1,8 +1,8 @@
 # <img alt="" src="src/public/logo.svg" height="30"> SchoolPass Automations
 
 [![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fbootsie123%2Fschoolpass-automations%2Fmain%2Fazuredeploy.json)
-[![License](https://img.shields.io/github/license/bootsie123/schoolpass-automations)](https://github.com/bootsie123/schoolpass-automations/blob/main/LICENSE)
 [![Version](https://img.shields.io/github/package-json/v/bootsie123/schoolpass-automations)](https://github.com/bootsie123/schoolpass-automations/blob/main/package.json)
+[![License](https://img.shields.io/github/license/bootsie123/schoolpass-automations)](https://github.com/bootsie123/schoolpass-automations/blob/main/LICENSE)
 
 A collection of automation tools for SchoolPass.
 
