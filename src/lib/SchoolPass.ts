@@ -324,13 +324,11 @@ export class SchoolPassAPI {
     password: string
   ): Promise<SchoolPassUser[]> {
     try {
-      const res = await this.http.get("Auth/users", {
-        params: {
-          schoolCode,
-          authType: "credentials",
-          email: username,
-          password
-        }
+      const res = await this.http.post("Auth/users", {
+        schoolCode,
+        authType: "credentials",
+        email: username,
+        password
       });
 
       return res.data;
